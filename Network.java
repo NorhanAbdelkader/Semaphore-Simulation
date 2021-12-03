@@ -25,9 +25,11 @@ public class Network{
       inputDevices.add(device);
     }
     for(int i = 0 ; i <inputDevices.size();i++){
-      //Thread.sleep(1000);
+      //Thread.sleep(1500);
       inputDevices.get(i).start();
     }
+
+    scan.close();
 
 
   }

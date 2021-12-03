@@ -22,7 +22,7 @@ public class Router {
         connectionsList.add(i, device);
         //Connection 1: C1 Occupied
         System.out.println("Connection " + (i+1) + ": " + device.getDeviceName() + " Occupied");
-        sleep(1000);
+        sleep(1500);
         break;
       }
     }
@@ -30,12 +30,12 @@ public class Router {
 
   public void logIn(Device device) throws InterruptedException{
     //- Connection 1: C1 login
-    sleep(1000);
+    sleep(1500);
     System.out.println("Connection " + (connectionsList.indexOf(device) + 1) + ": " + device.getDeviceName() + " login");
   }
   public void performsOnlineActivity(Device device) throws InterruptedException{
     //- Connection 2: C2 performs online activity
-    sleep(1000);
+    sleep(1500);
     System.out.println("Connection " + (connectionsList.indexOf(device) + 1) + ": " + device.getDeviceName() + " performs online activity");
   }
   public synchronized void logOut(Device device){
