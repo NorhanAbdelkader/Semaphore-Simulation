@@ -21,10 +21,9 @@ public class Semaphore {
       catch (InterruptedException e) {
         e.printStackTrace();
       }
+      return;
     }
-    else{
-      System.out.println("(" + device.getDeviceName() + ") (" + device.getType() + ") arrived.");
-    }
+    System.out.println("(" + device.getDeviceName() + ") (" + device.getType() + ") arrived.");
   }
 
   public synchronized void signal (){

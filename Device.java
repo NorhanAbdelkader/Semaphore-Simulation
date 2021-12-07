@@ -10,21 +10,39 @@ public class Device extends Thread{
     this.type = type;
     this.router = router;
   }
+
+  public void logIn() throws InterruptedException{
+    //- Connection 1: C1 login
+    sleep(1500);
+    System.out.println("Connection " + (router.getConnectionsList().indexOf(this) + 1) + ": " + this.getDeviceName() + " login");
+  }
+
+  public void performsOnlineActivity() throws InterruptedException{
+    //- Connection 2: C2 performs online activity
+    sleep(1500);
+    System.out.println("Connection " + (router.getConnectionsList().indexOf(this) + 1) + ": " + this.getDeviceName() + " performs online activity");
+  }
+
+  public void logOut() throws InterruptedException{  
+    sleep(1500);
+    router.releaseConnection(this);
+  }
+
+
   @Override
   public void run(){
     router.getSemaphore().wait(this);   
     try {
       router.fill(this);
-      router.logIn(this);
-      router.performsOnlineActivity(this);
-      router.logOut(this);
+      logIn();
+      performsOnlineActivity();
+      logOut();
     } 
     catch (InterruptedException e) {
       e.printStackTrace();
     }
 
     router.getSemaphore().signal();
-
   }
 
 
