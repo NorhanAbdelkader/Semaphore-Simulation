@@ -1,7 +1,6 @@
 public class Semaphore {
 
   private int connections;
-  private Boolean waiting;
   public Semaphore(){
     connections = 0;
   }

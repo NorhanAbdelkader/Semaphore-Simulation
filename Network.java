@@ -11,6 +11,15 @@ public class Network{
 
   static public void main(String[] args) throws InterruptedException{
     Network net = new Network();
+    ImageIcon routerImage= new ImageIcon(Objects.requireNonNull(Network.class.getResource("router.jpg")));
+    JLabel label = new JLabel(routerImage);
+    //.setHorizontalAlignment(SwingConstants.LEFT);
+    //label.setVisible(false);
+    //label.setVerticalAlignment(SwingConstants.BOTTOM);
+    //x-coordinate, y-coordinate, width and height
+    label.setBounds(1000, 1000, routerImage.getIconWidth(), routerImage.getIconHeight());
+    net.connect.add(label);
+    //label.setVisible(true);
 
     Scanner scan = new Scanner(System.in);
     int connections, devices;
@@ -33,15 +42,6 @@ public class Network{
       inputDevices.add(device);
     }
 
-
-//    ImageIcon pc= new ImageIcon(Network.class.getResource("pc1.png"));
-//    ImageIcon laptop= new ImageIcon(Network.class.getResource("laptop.png"));
-//
-//    JLabel imageLabel=new JLabel(pc);
-//    JLabel imageLabel2=new JLabel(laptop);
-//
-//    connect.add(imageLabel);
-//    connect.add(imageLabel2);
 
 
     for(int i = 0 ; i <inputDevices.size();i++){

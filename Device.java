@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -8,7 +7,7 @@ public class Device extends Thread{
   private String type;
   private final Router router;
   private final Network network;
-  ArrayList<JLabel> labels= new ArrayList<>();
+  private ArrayList<JLabel> labels= new ArrayList<>();
 
   //private int num;
 
@@ -43,36 +42,65 @@ public class Device extends Thread{
     ImageIcon laptop= new ImageIcon(Objects.requireNonNull(Network.class.getResource("laptop.png")));
     ImageIcon tablet= new ImageIcon(Objects.requireNonNull(Network.class.getResource("tablet.JPG")));
     ImageIcon mobile= new ImageIcon(Objects.requireNonNull(Network.class.getResource("mobile.JPG")));
+    ImageIcon unknownDevice= new ImageIcon(Objects.requireNonNull(Network.class.getResource("d.png")));
+
 
     // 1- pc 2- lap 3- tablet 4- mobile
     labels.add(new JLabel(pc));
     labels.add(new JLabel(laptop));
     labels.add(new JLabel(tablet));
     labels.add(new JLabel(mobile));
+    labels.add(new JLabel(unknownDevice));
+
+    for(int i = 0 ; i < 5; i ++){
+      labels.get(i).setVisible(false);
+    }
+
+  }
+  public void showImages(){
+    createImages();
+
+      switch (type)
+      {
+        case "pc":
+          labels.get(0).setHorizontalAlignment(SwingConstants.LEFT);
+          network.getFrame().add(labels.get(0));
+          labels.get(0).setVisible(true);
+
+          break;
+        case "laptop":
+          labels.get(1).setHorizontalAlignment(SwingConstants.LEFT);
+          network.getFrame().add(labels.get(1));
+          labels.get(1).setVisible(true);
+  
+          break;
+        case "tablet":
+          labels.get(2).setHorizontalAlignment(SwingConstants.LEFT);
+          network.getFrame().add(labels.get(2));
+          labels.get(2).setVisible(true);
+  
+          break;
+        case "mobile":
+          labels.get(3).setHorizontalAlignment(SwingConstants.LEFT);
+          network.getFrame().add(labels.get(3));
+          labels.get(3).setVisible(true);
+  
+          break;
+        default:
+          labels.get(4).setHorizontalAlignment(SwingConstants.LEFT);
+          network.getFrame().add(labels.get(4));
+          labels.get(4).setVisible(true);
+  
+          break;
+  
+      }
   }
 
   @Override
-  public void run(){
-
-    createImages();
-    switch (type)
-    {
-      case "pc":
-        network.getFrame().add(labels.get(0));
-        break;
-      case "laptop":
-        network.getFrame().add(labels.get(1));
-        break;
-      case "tablet":
-        network.getFrame().add(labels.get(2));
-        break;
-      case "mobile":
-        network.getFrame().add(labels.get(3));
-        break;
-    }
+  public void run() {
 
     router.getSemaphore().wait(this);
-
+    showImages();
 
     try {
       router.fill(this);
