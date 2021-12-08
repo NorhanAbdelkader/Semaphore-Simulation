@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
@@ -11,7 +12,7 @@ public class Network{
   }
 
 
-  static public void main(String[] args) {
+  static public void main(String[] args) throws IOException {
     Network net = new Network();
     net.panel1.setLayout(new  FlowLayout());
 
@@ -32,9 +33,8 @@ public class Network{
     ArrayList<Device> inputDevices = new ArrayList<>(devices);
 
     for(int i = 0 ; i < devices ;i++){
-      System.out.print("Enter Device name: ");
+      System.out.print("Enter Device name and type: ");
       String name = scan.next();
-      System.out.print("Enter Device type: ");
       String type = scan.next();
 
       Device device = new Device(name, type, router, net);
@@ -52,6 +52,7 @@ public class Network{
     net.connect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     scan.close();
-
+    //router.getFile().close();
   }
+
 }

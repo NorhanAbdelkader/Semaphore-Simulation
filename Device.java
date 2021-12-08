@@ -1,8 +1,10 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Vector;
 
 public class Device extends Thread{
   private final String name;
@@ -19,21 +21,33 @@ public class Device extends Thread{
     this.network=network;
   }
 
-  public void logIn() throws InterruptedException{
+  public void logIn() throws InterruptedException, IOException {
     //- Connection 1: C1 login
     sleep(1500);
     System.out.println("Connection " + (router.getConnectionsList().indexOf(this) + 1) + ": " + this.getDeviceName() + " login");
+    router.getFile().append("Connection " + (router.getConnectionsList().indexOf(this) + 1) + ": " + this.getDeviceName() + " login"+"\n");
+
   }
 
-  public void performsOnlineActivity() throws InterruptedException{
+  public void performsOnlineActivity() throws InterruptedException, IOException {
     //- Connection 2: C2 performs online activity
     sleep(1500);
     System.out.println("Connection " + (router.getConnectionsList().indexOf(this) + 1) + ": " + this.getDeviceName() + " performs online activity");
+    router.getFile().append("Connection " + (router.getConnectionsList().indexOf(this) + 1) + ": " + this.getDeviceName() + " performs online activity"+"\n");
   }
 
-  public void logOut() throws InterruptedException{  
+  public void logOut() throws InterruptedException, IOException {
     sleep(1500);
     router.releaseConnection(this);
+    Vector<Device> d=router.getConnectionsList();
+    boolean lastDevice=true;
+    for (Device device : d) {
+      if (device != null) {
+        lastDevice=false;
+        break;
+      }
+    }
+    if(lastDevice) router.getFile().close();
   }
 
   public ArrayList<JLabel> createImages()
@@ -111,7 +125,11 @@ public class Device extends Thread{
   @Override
   public void run() {
     showImages();
-    router.getSemaphore().wait(this);
+    try {
+      router.getSemaphore().wait(this,router);
+    } catch (IOException | InterruptedException e) {
+      e.printStackTrace();
+    }
 
 
     try {
@@ -124,7 +142,7 @@ public class Device extends Thread{
       label.setVisible(false);
 
     } 
-    catch (InterruptedException e) {
+    catch (InterruptedException | IOException e) {
       e.printStackTrace();
     }
 

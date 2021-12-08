@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class Semaphore {
 
   private int connections;
@@ -9,21 +11,19 @@ public class Semaphore {
     connections = val;
   }
 
-  public synchronized void wait (Device device){
+  public synchronized void wait (Device device,Router router) throws IOException, InterruptedException {
     connections --;
     if (connections < 0)
     {
-      try {
+
         System.out.println("(" + device.getDeviceName() + ") (" + device.getType() + ") arrived and waiting.");
+        router.getFile().append("(" + device.getDeviceName() + ") (" + device.getType() + ") arrived and waiting."+"\n");
         wait();
 
-      } 
-      catch (InterruptedException e) {
-        e.printStackTrace();
-      }
       return;
     }
     System.out.println("(" + device.getDeviceName() + ") (" + device.getType() + ") arrived.");
+    router.getFile().append("(" + device.getDeviceName() + ") (" + device.getType() + ") arrived."+"\n");
   }
 
   public synchronized void signal (){
