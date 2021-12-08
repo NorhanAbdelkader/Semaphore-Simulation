@@ -7,7 +7,8 @@ public class Device extends Thread{
   private String type;
   private final Router router;
   private final Network network;
-  private ArrayList<JLabel> labels= new ArrayList<>();
+  private JLabel label;
+  //private ArrayList<JLabel> labels= new ArrayList<>();
 
   //private int num;
 
@@ -35,8 +36,10 @@ public class Device extends Thread{
     router.releaseConnection(this);
   }
 
-  public void createImages()
+  public ArrayList<JLabel> createImages()
   {
+
+    ArrayList<JLabel> labels= new ArrayList<>();
 
     ImageIcon pc= new ImageIcon(Objects.requireNonNull(Network.class.getResource("pc1.png")));
     ImageIcon laptop= new ImageIcon(Objects.requireNonNull(Network.class.getResource("laptop.png")));
@@ -56,9 +59,11 @@ public class Device extends Thread{
       labels.get(i).setVisible(false);
     }
 
+    return labels;
+
   }
   public void showImages(){
-    createImages();
+    ArrayList<JLabel> labels = createImages();
 
       switch (type)
       {
@@ -66,30 +71,39 @@ public class Device extends Thread{
           labels.get(0).setHorizontalAlignment(SwingConstants.LEFT);
           network.getPanel1().add(labels.get(0));
           labels.get(0).setVisible(true);
+          label = labels.get(0);
 
           break;
         case "laptop":
           labels.get(1).setHorizontalAlignment(SwingConstants.LEFT);
           network.getPanel1().add(labels.get(1));
           labels.get(1).setVisible(true);
+          label = labels.get(1);
+
   
           break;
         case "tablet":
           labels.get(2).setHorizontalAlignment(SwingConstants.LEFT);
           network.getPanel1().add(labels.get(2));
           labels.get(2).setVisible(true);
+          label = labels.get(2);
+
   
           break;
         case "mobile":
           labels.get(3).setHorizontalAlignment(SwingConstants.LEFT);
           network.getPanel1().add(labels.get(3));
           labels.get(3).setVisible(true);
+          label = labels.get(3);
+
   
           break;
         default:
           labels.get(4).setHorizontalAlignment(SwingConstants.LEFT);
           network.getPanel1().add(labels.get(4));
           labels.get(4).setVisible(true);
+          label = labels.get(4);
+
   
           break;
   
@@ -107,6 +121,7 @@ public class Device extends Thread{
       logIn();
       performsOnlineActivity();
       logOut();
+      label.setVisible(false);
 
     } 
     catch (InterruptedException e) {

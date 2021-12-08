@@ -5,8 +5,6 @@ public class Network{
 
   private final JFrame connect = new JFrame("Connections");
   private final JPanel panel1 = new JPanel();
-  //private final JPanel panel2 = new JPanel();
-
 
   public JFrame getFrame(){
     return connect;
@@ -22,13 +20,8 @@ public class Network{
 
     ImageIcon routerImage= new ImageIcon(Objects.requireNonNull(Network.class.getResource("router.jpg")));
     JLabel label = new JLabel(routerImage);
-    //.setHorizontalAlignment(SwingConstants.LEFT);
-    //label.setVisible(false);
-    //label.setVerticalAlignment(SwingConstants.BOTTOM);
-    //x-coordinate, y-coordinate, width and height
     label.setBounds(1000, 1000, routerImage.getIconWidth(), routerImage.getIconHeight());
     net.connect.add(label);
-    //label.setVisible(true);
 
     Scanner scan = new Scanner(System.in);
     int connections, devices;
@@ -59,7 +52,6 @@ public class Network{
 
     net.connect.setSize(1650, 1000);
     net.connect.getContentPane().add(net.panel1, "North"); 
-    //net.connect.setLayout(new FlowLayout());
     net.connect.setVisible(true);
     net.connect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
