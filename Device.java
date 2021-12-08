@@ -72,7 +72,6 @@ public class Device extends Thread{
           label = labels.get(0);
           network.getPanel1().add(label);
           labels.get(0).setVisible(true);
-
           break;
         case "laptop":
           labels.get(1).setHorizontalAlignment(SwingConstants.LEFT);
@@ -104,7 +103,6 @@ public class Device extends Thread{
           labels.get(4).setVisible(true);
           label = labels.get(4);
 
-  
           break;
   
       }
@@ -112,8 +110,9 @@ public class Device extends Thread{
 
   @Override
   public void run() {
-    router.getSemaphore().wait(this);
     showImages();
+    router.getSemaphore().wait(this);
+
 
     try {
       Border border = BorderFactory.createLineBorder(Color.ORANGE, 5);
