@@ -7,7 +7,6 @@ public class Semaphore {
 
   public Semaphore(int val){
     connections = val;
-    //waiting= false;
   }
 
   public synchronized void wait (Device device){

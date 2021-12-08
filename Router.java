@@ -2,12 +2,12 @@ import java.util.*;
 import static java.lang.Thread.sleep;
 
 public class Router {
-  private Vector<Device> connectionsList;
-  private Semaphore semaphore;
+  private final Vector<Device> connectionsList;
+  private final Semaphore semaphore;
 
   public Router(int connectionsNum){
     semaphore = new Semaphore(connectionsNum);
-    connectionsList = new Vector<Device>(connectionsNum);
+    connectionsList = new Vector<>(connectionsNum);
 
     for (int i = 0 ; i < connectionsNum; i++){
       connectionsList.add(i, null);

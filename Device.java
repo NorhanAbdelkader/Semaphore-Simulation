@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Device extends Thread{
-  private String name;
-  private String type;
+  private final String name;
+  private final String type;
   private final Router router;
   private final Network network;
   private JLabel label;
-  //private ArrayList<JLabel> labels= new ArrayList<>();
 
-  //private int num;
 
   public Device(String name, String type, Router router ,Network network){
     this.name = name;
@@ -73,7 +71,6 @@ public class Device extends Thread{
           labels.get(0).setHorizontalAlignment(SwingConstants.LEFT);
           label = labels.get(0);
           network.getPanel1().add(label);
-          //label.setBorder(border);
           labels.get(0).setVisible(true);
 
           break;
@@ -136,13 +133,6 @@ public class Device extends Thread{
   }
 
 
-  public void setDeviceName(String name){
-    this.name = name;
-  }
-
-  public void setType(String type){
-    this.type = type;
-  }
   public String getDeviceName(){
     return name;
   }

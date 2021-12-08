@@ -6,15 +6,12 @@ public class Network{
   private final JFrame connect = new JFrame("Connections");
   private final JPanel panel1 = new JPanel();
 
-  public JFrame getFrame(){
-    return connect;
-  }
   public JPanel getPanel1(){
     return panel1;
   }
 
 
-  static public void main(String[] args) throws InterruptedException{
+  static public void main(String[] args) {
     Network net = new Network();
     net.panel1.setLayout(new  FlowLayout());
 
@@ -45,9 +42,8 @@ public class Network{
     }
 
 
-
-    for(int i = 0 ; i <inputDevices.size();i++){
-      inputDevices.get(i).start();
+    for (Device inputDevice : inputDevices) {
+      inputDevice.start();
     }
 
     net.connect.setSize(1650, 1000);
