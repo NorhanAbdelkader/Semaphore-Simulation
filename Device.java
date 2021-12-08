@@ -40,8 +40,8 @@ public class Device extends Thread{
 
     ImageIcon pc= new ImageIcon(Objects.requireNonNull(Network.class.getResource("pc1.png")));
     ImageIcon laptop= new ImageIcon(Objects.requireNonNull(Network.class.getResource("laptop.png")));
-    ImageIcon tablet= new ImageIcon(Objects.requireNonNull(Network.class.getResource("tablet.JPG")));
-    ImageIcon mobile= new ImageIcon(Objects.requireNonNull(Network.class.getResource("m5.JPG")));
+    ImageIcon tablet= new ImageIcon(Objects.requireNonNull(Network.class.getResource("tablet2.png")));
+    ImageIcon mobile= new ImageIcon(Objects.requireNonNull(Network.class.getResource("m2.png")));
     ImageIcon unknownDevice= new ImageIcon(Objects.requireNonNull(Network.class.getResource("d.png")));
 
 
