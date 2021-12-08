@@ -10,7 +10,7 @@ public class Semaphore {
     //waiting= false;
   }
 
-  public synchronized Boolean wait (Device device){
+  public synchronized void wait (Device device){
     connections --;
     if (connections < 0)
     {
@@ -22,10 +22,9 @@ public class Semaphore {
       catch (InterruptedException e) {
         e.printStackTrace();
       }
-      return true;
+      return;
     }
     System.out.println("(" + device.getDeviceName() + ") (" + device.getType() + ") arrived.");
-    return false; // not waiting
   }
 
   public synchronized void signal (){

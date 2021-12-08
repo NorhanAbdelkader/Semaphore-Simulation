@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -69,9 +71,10 @@ public class Device extends Thread{
       {
         case "pc":
           labels.get(0).setHorizontalAlignment(SwingConstants.LEFT);
-          network.getPanel1().add(labels.get(0));
-          labels.get(0).setVisible(true);
           label = labels.get(0);
+          network.getPanel1().add(label);
+          //label.setBorder(border);
+          labels.get(0).setVisible(true);
 
           break;
         case "laptop":
@@ -112,12 +115,13 @@ public class Device extends Thread{
 
   @Override
   public void run() {
-
     router.getSemaphore().wait(this);
     showImages();
 
     try {
+      Border border = BorderFactory.createLineBorder(Color.ORANGE, 5);
       router.fill(this);
+      label.setBorder(border);
       logIn();
       performsOnlineActivity();
       logOut();
