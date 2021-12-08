@@ -4,13 +4,22 @@ import javax.swing.*;
 public class Network{
 
   private final JFrame connect = new JFrame("Connections");
+  private final JPanel panel1 = new JPanel();
+  //private final JPanel panel2 = new JPanel();
+
+
   public JFrame getFrame(){
     return connect;
+  }
+  public JPanel getPanel1(){
+    return panel1;
   }
 
 
   static public void main(String[] args) throws InterruptedException{
     Network net = new Network();
+    net.panel1.setLayout(new  FlowLayout());
+
     ImageIcon routerImage= new ImageIcon(Objects.requireNonNull(Network.class.getResource("router.jpg")));
     JLabel label = new JLabel(routerImage);
     //.setHorizontalAlignment(SwingConstants.LEFT);
@@ -49,7 +58,8 @@ public class Network{
     }
 
     net.connect.setSize(1650, 1000);
-    net.connect.setLayout(new FlowLayout());
+    net.connect.getContentPane().add(net.panel1, "North"); 
+    //net.connect.setLayout(new FlowLayout());
     net.connect.setVisible(true);
     net.connect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

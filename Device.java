@@ -41,7 +41,7 @@ public class Device extends Thread{
     ImageIcon pc= new ImageIcon(Objects.requireNonNull(Network.class.getResource("pc1.png")));
     ImageIcon laptop= new ImageIcon(Objects.requireNonNull(Network.class.getResource("laptop.png")));
     ImageIcon tablet= new ImageIcon(Objects.requireNonNull(Network.class.getResource("tablet.JPG")));
-    ImageIcon mobile= new ImageIcon(Objects.requireNonNull(Network.class.getResource("mobile.JPG")));
+    ImageIcon mobile= new ImageIcon(Objects.requireNonNull(Network.class.getResource("m5.JPG")));
     ImageIcon unknownDevice= new ImageIcon(Objects.requireNonNull(Network.class.getResource("d.png")));
 
 
@@ -64,31 +64,31 @@ public class Device extends Thread{
       {
         case "pc":
           labels.get(0).setHorizontalAlignment(SwingConstants.LEFT);
-          network.getFrame().add(labels.get(0));
+          network.getPanel1().add(labels.get(0));
           labels.get(0).setVisible(true);
 
           break;
         case "laptop":
           labels.get(1).setHorizontalAlignment(SwingConstants.LEFT);
-          network.getFrame().add(labels.get(1));
+          network.getPanel1().add(labels.get(1));
           labels.get(1).setVisible(true);
   
           break;
         case "tablet":
           labels.get(2).setHorizontalAlignment(SwingConstants.LEFT);
-          network.getFrame().add(labels.get(2));
+          network.getPanel1().add(labels.get(2));
           labels.get(2).setVisible(true);
   
           break;
         case "mobile":
           labels.get(3).setHorizontalAlignment(SwingConstants.LEFT);
-          network.getFrame().add(labels.get(3));
+          network.getPanel1().add(labels.get(3));
           labels.get(3).setVisible(true);
   
           break;
         default:
           labels.get(4).setHorizontalAlignment(SwingConstants.LEFT);
-          network.getFrame().add(labels.get(4));
+          network.getPanel1().add(labels.get(4));
           labels.get(4).setVisible(true);
   
           break;
