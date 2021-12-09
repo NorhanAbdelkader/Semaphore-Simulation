@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -55,11 +56,13 @@ public class Device extends Thread{
 
     ArrayList<JLabel> labels= new ArrayList<>();
 
-    ImageIcon pc= new ImageIcon(Objects.requireNonNull(Network.class.getResource("pc1.png")));
-    ImageIcon laptop= new ImageIcon(Objects.requireNonNull(Network.class.getResource("laptop.png")));
-    ImageIcon tablet= new ImageIcon(Objects.requireNonNull(Network.class.getResource("tablet2.png")));
-    ImageIcon mobile= new ImageIcon(Objects.requireNonNull(Network.class.getResource("m2.png")));
-    ImageIcon unknownDevice= new ImageIcon(Objects.requireNonNull(Network.class.getResource("d.png")));
+    if (new  ImageIcon("pc1.png") != null && new  ImageIcon("laptop.png") != null && new  ImageIcon("tablet2.png") != null && new  ImageIcon("m2.png") != null && new  ImageIcon("d.png") != null){
+
+    ImageIcon pc= new ImageIcon("pc1.png");
+    ImageIcon laptop= new ImageIcon(("laptop.png"));
+    ImageIcon tablet= new ImageIcon(("tablet2.png"));
+    ImageIcon mobile= new ImageIcon(("m2.png"));
+    ImageIcon unknownDevice= new ImageIcon(("d.png"));
 
 
     // 1- pc 2- lap 3- tablet 4- mobile
@@ -72,13 +75,13 @@ public class Device extends Thread{
     for(int i = 0 ; i < 5; i ++){
       labels.get(i).setVisible(false);
     }
-
+  }
     return labels;
 
   }
   public void showImages(){
     ArrayList<JLabel> labels = createImages();
-
+    if(labels!=null){
       switch (type)
       {
         case "pc":
@@ -120,6 +123,7 @@ public class Device extends Thread{
           break;
   
       }
+    }
   }
 
   @Override
