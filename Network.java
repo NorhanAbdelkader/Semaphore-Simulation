@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
+
 public class Network{
 
   private final JFrame connect = new JFrame("Connections");

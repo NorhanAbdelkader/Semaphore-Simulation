@@ -25,7 +25,7 @@ public class Router {
         //Connection 1: C1 Occupied
         System.out.println("Connection " + (i+1) + ": " + device.getDeviceName() + " Occupied");
         file.append("Connection " + (i+1) + ": " + device.getDeviceName() + " Occupied"+"\n");
-        sleep(1500);
+        sleep(1200);
         break;
       }
     }
