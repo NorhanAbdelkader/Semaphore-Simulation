@@ -52,7 +52,6 @@ public class Network{
     net.connect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     scan.close();
-    //router.getFile().close();
   }
 
 }

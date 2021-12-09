@@ -143,6 +143,7 @@ public class Device extends Thread{
       logIn();
       performsOnlineActivity();
       logOut();
+      sleep(200);
       label.setVisible(false);
 
     } 
